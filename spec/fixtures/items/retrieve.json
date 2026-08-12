@@ -1,0 +1,23 @@
+{
+  "id": "a658c848-e475-457b-8565-d1fffba127c4",
+  "connector": { "id": 201, "name": "Pluggy Bank", "institutionUrl": "https://pluggy.ai",
+    "country": "BR", "type": "PERSONAL_BANK", "hasMFA": false, "oauth": false, "isSandbox": true,
+    "products": ["ACCOUNTS", "CREDIT_CARDS", "TRANSACTIONS", "LOANS"],
+    "credentials": [{ "name": "user", "label": "User", "type": "text", "validation": "^[0-9]{11}$" },
+                    { "name": "password", "label": "Password", "type": "password" }] },
+  "status": "UPDATED",
+  "executionStatus": "SUCCESS",
+  "clientUserId": "user-42",
+  "oauthRedirectUri": null,
+  "products": ["ACCOUNTS", "TRANSACTIONS"],
+  "consecutiveFailedLoginAttempts": 0,
+  "createdAt": "2024-03-01T10:00:00.000Z",
+  "updatedAt": "2024-03-15T10:00:00.000Z",
+  "lastUpdatedAt": "2024-03-15T10:00:00.000Z",
+  "nextAutoSyncAt": "2024-03-16T10:00:00.000Z",
+  "consentExpiresAt": "2025-03-01T10:00:00.000Z",
+  "statusDetail": { "accounts": { "isUpdated": true, "lastUpdatedAt": "2024-03-15T10:00:00.000Z", "warnings": [] },
+                    "transactions": { "isUpdated": true, "lastUpdatedAt": "2024-03-15T10:00:00.000Z", "warnings": [] },
+                    "loans": { "isUpdated": false, "lastUpdatedAt": null, "warnings": [
+                      { "code": "001", "message": "Loans not available for this connector" }] } }
+}

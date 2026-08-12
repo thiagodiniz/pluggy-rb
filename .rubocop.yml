@@ -1,0 +1,105 @@
+plugins:
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.1
+  NewCops: enable
+  SuggestExtensions: false
+  Exclude:
+    - "vendor/**/*"
+    - "spec/support/openapi/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+# Matches stripe-ruby, and avoids churn when a string later gains interpolation.
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
+
+# Endless methods read well for the one-line readers and predicates that make up
+# most of the resource layer.
+Style/EndlessMethod:
+  EnforcedStyle: allow_always
+
+# 30 rather than 25 for APIRequestor#execute: it is one retry loop with three
+# distinct exit paths (transport failure, key renewal, status retry) and
+# splitting it further obscures the control flow rather than clarifying it.
+Metrics/MethodLength:
+  Max: 30
+Metrics/AbcSize:
+  Max: 25
+Metrics/ClassLength:
+  Max: 200
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
+    - "Rakefile"
+    - "examples/**/*"
+
+# The walkthrough prints a summary table for all accounts before looping again
+# for per-account detail. Combining the loops would interleave the two.
+Style/CombinableLoops:
+  Exclude:
+    - "examples/**/*"
+Metrics/ModuleLength:
+  Exclude:
+    - "spec/**/*"
+
+Layout/LineLength:
+  Max: 110
+
+# Keeps continuation lines at a readable indent instead of aligning them under
+# a long first argument and pushing everything to the right margin.
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/FirstArgumentIndentation:
+  EnforcedStyle: consistent
+
+# Service methods mirror the API's query parameters one-for-one; collapsing them
+# into an options hash would lose the local validation and the documentation.
+Metrics/ParameterLists:
+  Enabled: false
+Metrics/CyclomaticComplexity:
+  Max: 12
+Metrics/PerceivedComplexity:
+  Max: 12
+
+# lib/pluggy-rb.rb is the Bundler auto-require shim; the name is deliberate.
+Naming/FileName:
+  Exclude:
+    - "lib/pluggy-rb.rb"
+
+# Paging chains like `list.auto_paging_each { }` read better than the
+# alternative.
+Style/MultilineBlockChain:
+  Enabled: false
+
+Style/SafeNavigationChainLength:
+  Max: 3
+
+# The examples print aligned tables; positional format tokens read better there
+# than annotated ones.
+Style/FormatStringToken:
+  Exclude:
+    - "examples/**/*"
+
+# Several spec files describe a behaviour that spans classes (the auth
+# lifecycle, pagination) rather than a single class.
+RSpec/DescribeClass:
+  Enabled: false
+RSpec/DescribedClass:
+  Enabled: false
+# Stubbing sleep on the requestor is exactly the any_instance case.
+RSpec/AnyInstance:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Max: 20
+RSpec/MultipleExpectations:
+  Max: 10
+RSpec/NestedGroups:
+  Max: 4

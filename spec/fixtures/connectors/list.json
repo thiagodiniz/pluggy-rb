@@ -1,0 +1,17 @@
+{
+  "page": 1, "total": 2, "totalPages": 1,
+  "results": [
+    { "id": 201, "name": "Pluggy Bank", "type": "PERSONAL_BANK", "country": "BR",
+      "isSandbox": true, "hasMFA": false, "oauth": false, "isOpenFinance": false,
+      "products": ["ACCOUNTS", "TRANSACTIONS"],
+      "credentials": [{ "name": "user", "label": "User", "type": "text" }],
+      "health": { "status": "ONLINE", "stage": null } },
+    { "id": 208, "name": "Pluggy Bank MFA 2-step", "type": "PERSONAL_BANK", "country": "BR",
+      "isSandbox": true, "hasMFA": true, "oauth": false, "isOpenFinance": true,
+      "products": ["ACCOUNTS", "TRANSACTIONS", "LOANS"],
+      "credentials": [{ "name": "user", "label": "User", "type": "text" },
+                      { "name": "token", "label": "Token", "type": "number", "mfa": true }],
+      "health": { "status": "UNSTABLE", "stage": null,
+                  "details": { "connectionRateLast6Hours": 72.5, "connectionsLast6Hours": 400 } } }
+  ]
+}

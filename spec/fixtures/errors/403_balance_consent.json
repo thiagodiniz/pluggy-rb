@@ -1,0 +1,5 @@
+{
+  "message": "The financial institution denied access to the account balance. The consent may be expired or missing the required permission.",
+  "code": 403,
+  "codeDescription": "BALANCE_CONSENT_ERROR"
+}

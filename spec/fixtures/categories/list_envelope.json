@@ -1,0 +1,19 @@
+{
+  "page": 1,
+  "total": 2,
+  "totalPages": 1,
+  "results": [
+    {
+      "id": "01000000",
+      "description": "Income",
+      "descriptionTranslated": "Renda"
+    },
+    {
+      "id": "01010000",
+      "description": "Salary/pro-labore",
+      "descriptionTranslated": "Salário",
+      "parentId": "01000000",
+      "parentDescription": "Income"
+    }
+  ]
+}

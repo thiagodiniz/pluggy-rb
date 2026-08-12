@@ -1,0 +1,5 @@
+{ "id": 201, "name": "Pluggy Bank", "type": "PERSONAL_BANK", "country": "BR",
+  "isSandbox": true, "hasMFA": false, "oauth": false,
+  "products": ["ACCOUNTS", "TRANSACTIONS"],
+  "credentials": [{ "name": "user", "label": "User", "type": "text", "validation": "^[0-9]{11}$",
+                    "validationMessage": "Must be 11 digits" }] }

@@ -1,0 +1,13 @@
+{
+  "foundMerchants": [
+    {
+      "businessName": "BANCO DO BRASIL SA",
+      "cnpj": "00000000000191",
+      "name": "BANCO DO BRASIL",
+      "cnae": "6422100",
+      "category": "Banking"
+    }
+  ],
+  "notFoundMerchants": [],
+  "invalidCnpjs": []
+}

@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "id": "a8534c85-53ce-4f21-94d7-50e9d2ee4957",
+      "description": "* PROV * COMPRA TESOURO DIRETO CLIENTES",
+      "descriptionRaw": "* PROV * COMPRA TESOURO DIRETO CLIENTES",
+      "currencyCode": "BRL",
+      "amount": -212.45,
+      "date": "2020-10-15T00:00:00.000Z",
+      "balance": 4439.4,
+      "category": "Fixed Income Investment",
+      "accountId": "562b795d-1653-429f-be86-74ead9502813",
+      "providerCode": null,
+      "status": "POSTED",
+      "paymentData": null,
+      "type": "DEBIT",
+      "providerId": null
+    }
+  ],
+  "next": "?accountId=562b795d-1653-429f-be86-74ead9502813&after=MjAyMC0xMC0xNVQwMDowMDowMC4wMDBa+YTg1MzRjODU="
+}

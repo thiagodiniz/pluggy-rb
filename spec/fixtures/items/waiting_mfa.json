@@ -1,0 +1,8 @@
+{
+  "id": "a658c848-e475-457b-8565-d1fffba127c4",
+  "status": "WAITING_USER_INPUT",
+  "executionStatus": "USER_INPUT_TIMEOUT",
+  "parameter": { "name": "token", "label": "Token", "type": "number", "mfa": true },
+  "userAction": { "instructions": "Enter the 6-digit code from your authenticator",
+                  "expiresAt": "2024-03-15T10:05:00.000Z" }
+}

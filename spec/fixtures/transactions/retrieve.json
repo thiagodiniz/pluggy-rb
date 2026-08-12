@@ -1,0 +1,6 @@
+{ "id": "6ec156fe-e8ac-4d9a-a4b3-7770529ab01c", "description": "Tesouro Direto",
+  "descriptionRaw": "* PROV * COMPRA TESOURO DIRETO CLIENTES", "currencyCode": "BRL",
+  "amount": -212.45, "date": "2020-10-15T00:00:00.000Z", "type": "DEBIT", "status": "POSTED",
+  "balance": 4439.4, "category": "Fixed Income Investment", "categoryId": "04000000",
+  "accountId": "562b795d-1653-429f-be86-74ead9502813", "order": 1,
+  "createdAt": "2020-10-15T02:00:00.000Z", "updatedAt": "2020-10-15T02:00:00.000Z" }

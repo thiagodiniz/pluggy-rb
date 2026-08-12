@@ -1,0 +1,9 @@
+{
+  "code": 400,
+  "codeDescription": "CONNECTOR_VALIDATION_ERROR",
+  "message": "Parameters are not valid",
+  "details": [
+    { "code": "002", "message": "user is required", "parameter": "user" },
+    { "code": "003", "message": "password is invalid", "parameter": "password" }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "codeDescription": "ITEM_USER_ALREADY_EXISTS",
+  "message": "An item for this connector and clientUserId already exists",
+  "items": ["a658c848-e475-457b-8565-d1fffba127c4", "b769d959-f586-4680-9676-e2000cb238d5"]
+}

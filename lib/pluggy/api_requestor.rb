@@ -2,8 +2,6 @@
 
 require "net/http"
 require "json"
-require "zlib"
-require "stringio"
 require "bigdecimal"
 
 module Pluggy
@@ -161,9 +159,11 @@ module Pluggy
     end
 
     def headers(key, payload)
+      # Accept-Encoding is left to Net::HTTP: setting it by hand turns off its
+      # transparent decompression, which would leave every response body -- and
+      # every Error#http_body built from one -- as raw gzip bytes.
       h = {
         "Accept" => "application/json",
-        "Accept-Encoding" => "gzip",
         "User-Agent" => user_agent
       }
       h["X-API-KEY"] = key.to_s if key
@@ -187,14 +187,13 @@ module Pluggy
 
     def parse_body(response)
       raw = response.body.to_s
-      raw = Zlib::GzipReader.new(StringIO.new(raw)).read if response["content-encoding"] == "gzip"
       return nil if raw.empty?
 
       # decimal_class reads the lexical digits straight off the wire, so money
       # never passes through a Float. Integers stay Integer.
       options = @config.decimal_amounts ? { decimal_class: BigDecimal } : {}
       JSON.parse(raw, **options)
-    rescue JSON::ParserError, Zlib::Error
+    rescue JSON::ParserError
       # A proxy or CDN error page; hand it back for the error builder to show.
       raw
     end

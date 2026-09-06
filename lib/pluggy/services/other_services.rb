@@ -133,13 +133,17 @@ module Pluggy
 
     class ConnectorService < BaseService
       # GET /connectors. `countries` and `types` are comma-joined by the encoder.
+      #
+      # The endpoint accepts page/pageSize, so the result always knows how to
+      # fetch its successor -- auto_paging_each walks the whole catalogue even
+      # when the first page was requested without paging parameters.
       def list(countries: nil, types: nil, name: nil, sandbox: nil, health_details: nil,
         is_open_finance: nil, supports_payment_initiation: nil,
         supports_smart_transfers: nil, supports_automatic_pix: nil,
         page: nil, page_size: nil)
         list_request("/connectors",
           klass: Resources::Connector,
-          paginated: !page.nil? || !page_size.nil?,
+          paginated: true,
           countries: countries,
           types: types,
           name: name,

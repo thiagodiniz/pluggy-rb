@@ -182,6 +182,18 @@ RSpec.describe Pluggy::PluggyObject do
       txn = Pluggy::Resources::Transaction.new("date" => "2024-03-15T00:00:00.000Z")
       expect(txn.date).to eq("2024-03-15T00:00:00.000Z")
     end
+
+    it "can be switched off for one client without touching the globals" do
+      stub_auth
+      stub_pluggy(:get, "/transactions/t1", body: { "id" => "t1",
+                                                    "date" => "2024-03-15T00:00:00.000Z" })
+
+      raw = test_client(coerce_times: false).transactions.retrieve("t1")
+      global = test_client.transactions.retrieve("t1")
+
+      expect(raw.date).to eq("2024-03-15T00:00:00.000Z")
+      expect(global.date).to be_a(Time)
+    end
   end
 
   describe "nested conversion" do

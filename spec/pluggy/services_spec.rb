@@ -299,6 +299,17 @@ RSpec.describe "services" do
       expect(unstable.supports?(:loans)).to be(true)
     end
 
+    it "walks the whole catalogue even when the first page asked for no paging" do
+      page = lambda do |number, results|
+        { "results" => results, "page" => number, "total" => 2, "totalPages" => 2 }
+      end
+      stub_pluggy(:get, "/connectors", body: page.call(1, [{ "id" => 201 }]))
+      stub_pluggy(:get, "/connectors", body: page.call(2, [{ "id" => 202 }]),
+        query: { page: "2" })
+
+      expect(client.connectors.list.auto_paging_each.map(&:id)).to eq([201, 202])
+    end
+
     it "takes a numeric id, unlike every other resource" do
       stub_pluggy(:get, "/connectors/201", fixture: "connectors/retrieve")
 

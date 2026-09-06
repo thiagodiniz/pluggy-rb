@@ -20,7 +20,11 @@ module Pluggy
     end
 
     def connection_for(config)
-      @pool[config.connection_key] ||= build(config)
+      http = @pool[config.connection_key] ||= build(config)
+      # Net::HTTP only reuses a socket once the session has been started; an
+      # unstarted object opens and closes one connection per request.
+      http.start unless http.started?
+      http
     end
 
     def clear!

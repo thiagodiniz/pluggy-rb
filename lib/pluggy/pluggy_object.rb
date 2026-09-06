@@ -228,6 +228,11 @@ module Pluggy
       end
     end
 
+    # The client's own configuration when the object came from one, so
+    # Client.new(coerce_times: false) is honoured; the global defaults
+    # otherwise.
+    def config = @client&.config || Pluggy.config
+
     def unwrap(value)
       case value
       when PluggyObject then value.to_h
@@ -238,7 +243,7 @@ module Pluggy
 
     def coerce_time(raw)
       return raw unless raw.is_a?(String)
-      return raw unless Pluggy.config.coerce_times
+      return raw unless config.coerce_times
       return raw unless raw.match?(ISO8601)
 
       # A bare "2024-03-15" is a Date; anything with a time part is a Time.
